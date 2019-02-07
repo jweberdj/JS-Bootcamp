@@ -10,7 +10,7 @@ const getSavedTodos = function () {
 }
 
 // Save todos to localStorage
-const saveTodos = function (todos) {
+const saveTodos = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
@@ -27,7 +27,7 @@ const removeTodo = function (id) {
 
 // Toggle the completed value for a given todo
 const toggleTodo = function (id) {
-    const todo = todos.find(function (todo) {
+    const todo = todos.find((todo) => {
         return todo.id === id
     })
 
@@ -45,14 +45,14 @@ const renderTodos = function (todos, filters) {
         return searchTextMatch && hideCompletedMatch
     })
 
-    const incompleteTodos = filteredTodos.filter(function (todo) {
+    const incompleteTodos = filteredTodos.filter((todo) => {
         return !todo.completed
     })
 
     document.querySelector('#todos').innerHTML = ''
     document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos))
 
-    filteredTodos.forEach(function (todo) {
+    filteredTodos.forEach((todo) => {
         document.querySelector('#todos').appendChild(generateTodoDOM(todo))
     })
 }
